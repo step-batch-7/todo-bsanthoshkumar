@@ -1,0 +1,18 @@
+body {
+  font-family: sans-serif;
+}
+h1 {
+  font-weight: 500;
+}
+#mainDivision {
+  display: flex;
+  flex-flow: wrap;
+  margin: 5%;
+}
+.todoList {
+  border: solid rgba(0, 0, 0, 0.2) 1px;
+  border-radius: 8%;
+  height: 200px;
+  width: 200px;
+  margin: 2%;
+}
