@@ -1,0 +1,17 @@
+create required files and folders.
+intialise npm
+add sample index.html file.
+add server and required handlers for running server.
+Create one or more to-do list with a title.
+View all the to-do lists.
+Add an item to a to-do list.
+Delete an item from to-do list.
+Mark an item as done and undone.
+Delete a todo list.
+
+datastructure of storing todo list.
+ [
+   {title: 'title1', list : [{value:'value1',isDone:false},{value:'value2',isDone:false},...]},
+   {title: 'title1', list : [{value:'value1',isDone:false},{value:'value2',isDone:false},...]},
+   ...
+ ] 
