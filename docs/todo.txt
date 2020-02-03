@@ -1,7 +1,7 @@
 --done-- create required files and folders.
 --done-- intialise npm
 --done-- add sample index.html file.
-add server and required handlers for running server.
+--done-- add server and required handlers for running server.
 Create one or more to-do list with a title.
 View all the to-do lists.
 Add an item to a to-do list.

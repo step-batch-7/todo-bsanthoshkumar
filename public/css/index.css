@@ -16,3 +16,12 @@ h1 {
   width: 200px;
   margin: 2%;
 }
+.addTodoList {
+  border: solid rgba(0, 0, 0, 0.2) 1px;
+  border-radius: 8%;
+  margin: 2%;
+  width: 200px;
+  height: 200px;
+  text-align: center;
+  color: rgba(0, 0, 0, 0.5);
+}
