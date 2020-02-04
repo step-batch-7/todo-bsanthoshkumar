@@ -14,19 +14,19 @@ h1 {
   position: relative;
   display: flex;
   flex-flow: wrap;
+  align-items: flex-start;
   margin: 5%;
 }
 .todoList {
   border: solid rgba(0, 0, 0, 0.2) 1px;
   border-radius: 8%;
-  height: 200px;
-  width: 200px;
   margin: 2%;
+  width: 300px;
 }
 .heading {
   font-weight: 500;
   margin: 5%;
-
+  padding: 2%;
 }
 /* container styles ending */
 
@@ -35,10 +35,11 @@ h1 {
   border: solid rgba(0, 0, 0, 0.2) 1px;
   border-radius: 50%;
   margin-left: 90%;
-  margin-top: 35%;
+  margin-top: 45%;
   height: 50px;
   width: 50px;
-  position: static;
+  position: fixed;
+  top: 0;
   text-align: center;
   color: rgba(0, 0, 0, 1);
 }
@@ -56,15 +57,17 @@ h1 {
 .popUpBox {
   border: solid rgba(0, 0, 0, 0.2) 1px;
   margin-left: 35%;
-  margin-top: 3%;
-  position: relative;
+  position: absolute;
+  padding: 2%;
   width: 400px;
-  height: 200px;
-  top: 20%;
+  top: 25%;
+  font-size: 20px;
   animation: animatezoom 0.6s;
+  background: white;
 }
 .closeButton {
-  margin-left: 94%;
+  margin-left: 94.5%;
+  padding-top: 0%;
 }
 @keyframes animatezoom {
   from {
@@ -74,11 +77,14 @@ h1 {
     transform: scale(1);
   }
 }
-#title {
+.textbox {
   margin: 4%;
   width: 300px;
   height: 30px;
   font-size: 20px;
+  background: none;
+  border: none;
+  border-bottom: solid black 1px;
 }
 
 .addButton {

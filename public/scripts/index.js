@@ -1,11 +1,49 @@
 const createElement = elementName => document.createElement(elementName);
 const getElement = selector => document.querySelector(selector);
 
+const createForm = () => {
+  return `
+  <form action="addTodoList" method="post" class="popUpBox animateZoom">
+    <button type="button" class="closeButton" onclick="togglePopUp()">X</button>
+    <h4 class="heading">Create ToDo</h4>
+    Title:<input type="text" name="title" id="title" class="textbox" required /> <br />
+    <div id="items"></div>
+    <input type="button" value="+" onclick="addCheckBox()" id="addItem"/>
+    <input type="submit" value="save" class="addButton"/>
+  </form>`;
+};
+
 const togglePopUp = () => {
   const popUpDivision = getElement('#popUpDivision');
+  const addTodoList = getElement('.addTodoList');
   const displayValue = popUpDivision.style.display;
-  popUpDivision.style.display = displayValue === 'block' ? 'none' : 'block';
-  return;
+  if (displayValue === 'none') {
+    popUpDivision.style.display = 'block';
+    popUpDivision.innerHTML = createForm();
+    addTodoList.style.display = 'none';
+    return;
+  }
+  popUpDivision.style.display = 'none';
+  addTodoList.style.display = 'block';
+};
+
+const createItem = id => {
+  const input = createElement('input');
+  const label = createElement('label');
+  input.type = 'text';
+  input.name = `item${id}`;
+  input.id = `item${id}`;
+  input.classList.add('textbox');
+  label.innerText = `Item${id}:`;
+  return { input, label };
+};
+
+const addCheckBox = () => {
+  const items = getElement('#items');
+  const id = document.querySelectorAll('.textbox').length;
+  const { input, label } = createItem(id);
+  items.append(label);
+  items.append(input);
 };
 
 const sendHttpGet = (url, callback) => {
@@ -19,39 +57,26 @@ const sendHttpGet = (url, callback) => {
   request.send();
 };
 
-const createHeader = title => {
-  const header = createElement('h4');
-  header.classList.add('heading');
-  header.innerText = title;
-  return header;
+const createTasks = items => {
+  return items.map(item => `<p>${item.value}</p><br />`).join('\n');
 };
 
-const createTask = item => {
-  const { value, isDone } = item;
-  const task = document.createElement('p');
-  task.innerHTML = value + '<br/>';
-  return task;
-};
 const createTodoList = todoList => {
   const { id, title, items } = todoList;
-  console.log(todoList);
-  const todoDivision = document.createElement('div');
-  const header = createHeader(title);
-  const line = createElement('hr');
-  todoDivision.id = id;
-  todoDivision.classList.add('todoList');
-  todoDivision.append(header);
-  todoDivision.append(line);
-  items.map(item => todoDivision.append(createTask(item)));
-  return todoDivision;
+  return `
+  <div class="todoList" id="${id}">
+    <h4 class="heading">${title}</h4>
+    <hr />
+    ${createTasks(items)}
+  </div>`;
 };
 
 const showTodoLists = text => {
   const container = getElement('#container');
   const todoLists = JSON.parse(text);
-  const todoListsAsHtml = todoLists.map(createTodoList);
+  const todoListsAsHtml = todoLists.map(createTodoList).join('\n');
   container.innerHTML = '';
-  todoListsAsHtml.forEach(todoList => container.append(todoList));
+  container.innerHTML = todoListsAsHtml;
 };
 
 const loadTodoLists = () => sendHttpGet('/getTodoLists', showTodoLists);

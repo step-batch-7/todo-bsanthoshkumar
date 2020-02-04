@@ -8,16 +8,7 @@
   <body onload="main()">
     <h1 align="center">ToDo</h1>
     <div id="container"></div>
-    <div id="popUpDivision">
-      <form action="addTodoList" method="post" class="popUpBox animateZoom">
-        <button class="closeButton" onclick="togglePopUp()">
-          X
-        </button>
-        <h2 class="heading">Add ToDo</h2>
-        <input type="text" name="title" id="title" required /> <br />
-        <input type="submit" value="add" class="addButton" onclick="togglePopUp()" />
-      </form>
-    </div>
+    <div id="popUpDivision"></div>
     <div class="addTodoList" onclick="togglePopUp()">
       <p style="margin-top: 30%;">+</p>
     </div>
