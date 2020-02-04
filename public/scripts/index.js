@@ -8,7 +8,8 @@ const createForm = () => {
     <h4 class="heading">Create ToDo</h4>
     Title:<input type="text" name="title" id="title" class="textbox" required /> <br />
     <div id="items"></div>
-    <input type="button" value="+" onclick="addCheckBox()" id="addItem"/>
+    <input type="button" value="+" onclick="addItem()"/>
+    <input type="button" value="-" onclick="removeItem()"/>
     <input type="submit" value="save" class="addButton"/>
   </form>`;
 };
@@ -38,12 +39,18 @@ const createItem = id => {
   return { input, label };
 };
 
-const addCheckBox = () => {
+const addItem = () => {
   const items = getElement('#items');
   const id = document.querySelectorAll('.textbox').length;
   const { input, label } = createItem(id);
   items.append(label);
   items.append(input);
+};
+
+const removeItem = () => {
+  const items = document.querySelector('#items');
+  items.removeChild(items.lastChild);
+  items.removeChild(items.lastChild);
 };
 
 const sendHttpGet = (url, callback) => {
