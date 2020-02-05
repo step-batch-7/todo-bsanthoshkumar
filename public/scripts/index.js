@@ -86,6 +86,7 @@ const showTodoLists = text => {
 };
 
 const deleteTodoList = todoListId => sendHttpPost('/deleteTodoList', todoListId, showTodoLists);
+
 const loadTodoLists = () => sendHttpGet('/getTodoLists', showTodoLists);
 
 const main = () => {
