@@ -5,12 +5,12 @@ const createForm = () => {
   return `
   <form action="addTodoList" method="post" class="popUpBox animateZoom">
     <button type="button" class="closeButton" onclick="togglePopUp()">X</button>
-    <h4 class="heading">Create ToDo</h4>
+    <h4 class="formHeading">Create ToDo</h4>
     Title:<input type="text" name="title" id="title" class="textbox" required /> <br />
     <div id="items"></div>
-    <input type="button" value="+" onclick="addItem()"/>
-    <input type="button" value="-" onclick="removeItem()"/>
-    <input type="submit" value="save" class="addButton"/>
+    <input type="button" value="+" onclick="addItem()" class="addButton"/>
+    <input type="button" value="-" onclick="removeItem()" class="removeButton"/>
+    <input type="submit" value="save" class="saveButton"/>
   </form>`;
 };
 
@@ -65,7 +65,7 @@ const sendHttpGet = (url, callback) => {
 };
 
 const createTasks = items => {
-  return items.map(item => `<p>${item.value}</p><br />`).join('\n');
+  return items.map(item => `<div class="todoItem"><div id="tickbox"></div>${item.value}</div>`);
 };
 
 const createTodoList = todoList => {
@@ -74,7 +74,7 @@ const createTodoList = todoList => {
   <div class="todoList" id="${id}">
     <h4 class="heading">${title}</h4>
     <hr />
-    ${createTasks(items)}
+    ${createTasks(items).join('\n')}
   </div>`;
 };
 
