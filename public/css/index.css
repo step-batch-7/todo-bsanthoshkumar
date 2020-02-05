@@ -17,7 +17,6 @@ h1 {
   flex-direction: column;
   flex-wrap: wrap;
   align-content: flex-start;
-  margin-top: 5%;
   height: 90vh;
   overflow: scroll;
 }
@@ -30,6 +29,17 @@ h1 {
 .todoList:hover {
   box-shadow: 0 0 7px 1px rgb(170, 170, 170);
 }
+.header {
+  display: flex;
+  justify-content: space-between;
+  font-weight: 500;
+  margin: 5%;
+  padding: 2%;
+}
+.deleteButton {
+  height: 20px;
+  width: 20px;
+}
 .todoItem {
   display: flex;
   flex-wrap: wrap;
@@ -41,11 +51,6 @@ h1 {
   border: solid black 1px;
   margin: 1%;
   margin-right: 10%;
-}
-.heading {
-  font-weight: 500;
-  margin: 5%;
-  padding: 2%;
 }
 /* container styles ending */
 
@@ -63,7 +68,7 @@ h1 {
   color: rgba(0, 0, 0, 1);
 }
 .addTodoList:hover {
-  transform: scale(1.1,1.1);
+  transform: scale(1.1, 1.1);
   box-shadow: 0 0 7px 1px rgba(180, 180, 180, 0.5);
 }
 /* add todo button styles ending */
@@ -81,14 +86,12 @@ h1 {
   border: solid rgba(0, 0, 0, 0.2) 1px;
   border-radius: 30px;
   margin-left: 35%;
-  position: absolute;
+  position: relative;
   width: 400px;
-  height: 400px;
   top: 25%;
   font-size: 20px;
   animation: animatezoom 0.6s;
   background: white;
-  overflow: scroll;
 }
 .closeButton {
   margin-left: 90%;
@@ -121,13 +124,15 @@ h1 {
   border-bottom: solid black 1px;
 }
 
+.todobtns {
+  width: 100%;
+  position: absolute;
+  left: 4em;
+  bottom: 2em;
+}
 .addButton,
 .removeButton,
 .saveButton {
-  position: fixed;
-  height: 50px;
-  width: fit-content;
-  margin-left: 20%;
-  margin-top: 35%;
+  margin-left: 10%;
 }
 /* form styles ending */

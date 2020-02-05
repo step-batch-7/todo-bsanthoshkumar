@@ -1,26 +1,12 @@
 const createElement = elementName => document.createElement(elementName);
 const getElement = selector => document.querySelector(selector);
 
-const createForm = () => {
-  return `
-  <form action="addTodoList" method="post" class="popUpBox animateZoom">
-    <button type="button" class="closeButton" onclick="togglePopUp()">X</button>
-    <h4 class="formHeading">Create ToDo</h4>
-    Title:<input type="text" name="title" id="title" class="textbox" required /> <br />
-    <div id="items"></div>
-    <input type="button" value="+" onclick="addItem()" class="addButton"/>
-    <input type="button" value="-" onclick="removeItem()" class="removeButton"/>
-    <input type="submit" value="save" class="saveButton"/>
-  </form>`;
-};
-
 const togglePopUp = () => {
   const popUpDivision = getElement('#popUpDivision');
   const addTodoList = getElement('.addTodoList');
   const displayValue = popUpDivision.style.display;
   if (displayValue === 'none') {
     popUpDivision.style.display = 'block';
-    popUpDivision.innerHTML = createForm();
     addTodoList.style.display = 'none';
     return;
   }
@@ -64,6 +50,17 @@ const sendHttpGet = (url, callback) => {
   request.send();
 };
 
+const sendHttpPost = (url, data, callback) => {
+  const request = new XMLHttpRequest();
+  request.open('POST', url);
+  request.onload = function() {
+    if (this.status === 200) {
+      callback(this.responseText);
+    }
+  };
+  request.send(data);
+};
+
 const createTasks = items => {
   return items.map(item => `<div class="todoItem"><div id="tickbox"></div>${item.value}</div>`);
 };
@@ -72,7 +69,9 @@ const createTodoList = todoList => {
   const { id, title, items } = todoList;
   return `
   <div class="todoList" id="${id}">
-    <h4 class="heading">${title}</h4>
+    <div class="header">${title}
+    <img src="assets/deleteicon.png" alt="no image" class="deleteButton" onclick="deleteTodoList('${id}')"/>
+    </div>
     <hr />
     ${createTasks(items).join('\n')}
   </div>`;
@@ -86,6 +85,7 @@ const showTodoLists = text => {
   container.innerHTML = todoListsAsHtml;
 };
 
+const deleteTodoList = todoListId => sendHttpPost('/deleteTodoList', todoListId, showTodoLists);
 const loadTodoLists = () => sendHttpGet('/getTodoLists', showTodoLists);
 
 const main = () => {
