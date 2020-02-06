@@ -103,9 +103,10 @@ const createTodoList = todoList => {
   return `
   <div class="todoList" id="${id}">
     <div class="heading">${title}
-    <img src="assets/deleteicon.png" alt="no image" class="deleteButton" onclick="deleteTodoList('${id}')"/>
+    <img src="assets/deleteicon.png" alt="no image" class="deleteButton" onclick="deleteTodoList(${id})"/>
     </div>
     ${createTasks(id, tasks).join('\n')}
+    <input type='text' placeHolder="New Task..." class="newTaskBox" onkeypress="addTask(${id})"/>
   </div>`;
 };
 
@@ -127,6 +128,13 @@ const deleteTask = (todoListId, taskId) => {
   sendHttpPost('/deleteTask', [todoListId, taskId], showTodoLists);
 };
 
+const addTask = todoListId => {
+  const newTask = document.getElementById(todoListId).lastElementChild;
+  if (event.key === 'Enter' && newTask.value !== '') {
+    const name = newTask.value;
+    sendHttpPost('/addTask', [todoListId, name], showTodoLists);
+  }
+};
 const loadTodoLists = () => sendHttpGet('/getTodoLists', showTodoLists);
 
 const main = () => {

@@ -93,8 +93,9 @@ body {
 }
 .heading {
   display: flex;
+  flex-grow: 1;
   justify-content: space-between;
-  font-size: 1.1em;
+  font-size: 20px;
   font-weight: 500;
   margin: 5%;
   padding: 2%;
@@ -110,6 +111,15 @@ body {
 .deleteButton:hover {
   cursor: pointer;
   flex-shrink: 0;
+  transform: scale(1.3);
+}
+.addTaskButton {
+  height: 20px;
+  width: 20px;
+  flex-shrink: 0;
+}
+.addTaskButton:hover {
+  cursor: pointer;
   transform: scale(1.3);
 }
 .todoItem {
@@ -139,6 +149,16 @@ body {
 }
 .todoItem:hover > img {
   display: inline;
+}
+.newTaskBox {
+  margin-left: 2vw;
+  margin-bottom: 2vw;
+  width: 250px;
+  height: 20px;
+  font-size: 20px;
+  background: none;
+  border: none;
+  border-bottom: solid black 1px;
 }
 /* container styles ending */
 
