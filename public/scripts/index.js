@@ -90,8 +90,10 @@ const createTasks = (id, tasks) => {
   return tasks.map(task => {
     return `
     <div class="todoItem">
-      <div id="tickbox" class="${task.isDone ? 'checked' : ''}" onclick="toggleTask(${id},${task.id})"></div>
-      ${task.name}
+      <div class="tickbox ${task.isDone ? 'checked' : ''}" onclick="toggleTask(${id},${task.id})">
+      </div>
+      <div class="name">${task.name}</div>
+      <img src="./assets/deleteicon.png" alt="no image" class="deleteButton" onclick="deleteTask(${id},${task.id})"/>
     </div>`;
   });
 };
@@ -116,9 +118,15 @@ const showTodoLists = text => {
 };
 
 const deleteTodoList = todoListId => sendHttpPost('/deleteTodoList', todoListId, showTodoLists);
+
 const toggleTask = (todoListId, taskId) => {
   sendHttpPost('/toggleTask', [todoListId, taskId], showTodoLists);
 };
+
+const deleteTask = (todoListId, taskId) => {
+  sendHttpPost('/deleteTask', [todoListId, taskId], showTodoLists);
+};
+
 const loadTodoLists = () => sendHttpGet('/getTodoLists', showTodoLists);
 
 const main = () => {
