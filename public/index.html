@@ -11,25 +11,9 @@
         <p style="margin-top: 30%;">+</p>
       </div>
       <div class="title"><span>ToDo</span></div>
-      <div>
-        <img class="settingsicon" src="./assets/seetingsicon.png" alt="no image" onclick="toggleBackground()" />
-      </div>
+      <div class="darktheme"><input class="checkbox" type="checkbox" onclick="toggleBackground()" />Dark Theme</div>
     </div>
     <div id="container"></div>
-    <div id="popUpDivision">
-      <div class="popUpBox animateZoom">
-        <form action="addTodoList" method="post">
-          <button type="button" class="closeButton" onclick="togglePopUp()">X</button>
-          <h4 class="formHeading">Create ToDo</h4>
-          Title:<input type="text" name="title" id="title" class="textbox" required /> <br />
-          <div id="items"></div>
-          <div class="todobtns">
-            <input type="button" value="+" onclick="addItem()" class="addButton" />
-            <input type="button" value="-" onclick="removeItem()" class="removeButton" />
-            <input type="submit" value="save" class="saveButton" />
-          </div>
-        </form>
-      </div>
-    </div>
+    <div id="popUpDivision"></div>
   </body>
 </html>

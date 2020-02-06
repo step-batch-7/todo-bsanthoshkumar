@@ -1,11 +1,29 @@
 const createElement = elementName => document.createElement(elementName);
 const getElement = selector => document.querySelector(selector);
 
+const createForm = () => {
+  return `
+  <div class="popUpBox animateZoom">
+        <form action="addTodoList" method="post" class="todoform">
+          <button type="button" class="closeButton" onclick="togglePopUp()">X</button>
+          <h4 class="formHeading">Create ToDo</h4>
+          <span class="label">Title:</span>
+          <input type="text" name="title" id="title" class="textbox" required /> <br />
+          <div id="items"></div>
+          <div class="todobtns">
+            <input type="button" value="add item" onclick="addItem()" class="addButton" />
+            <input type="button" value="remove item" onclick="removeItem()" class="removeButton" />
+            <input type="submit" value="save" class="saveButton" />
+          </div>
+        </form>
+      </div>`;
+};
 const togglePopUp = () => {
   const popUpDivision = getElement('#popUpDivision');
   const displayValue = popUpDivision.style.display;
   if (displayValue === 'none') {
     popUpDivision.style.display = 'block';
+    popUpDivision.innerHTML = createForm();
     return;
   }
   popUpDivision.style.display = 'none';
@@ -78,7 +96,6 @@ const createTodoList = todoList => {
     <div class="heading">${title}
     <img src="assets/deleteicon.png" alt="no image" class="deleteButton" onclick="deleteTodoList('${id}')"/>
     </div>
-    <hr />
     ${createTasks(tasks).join('\n')}
   </div>`;
 };

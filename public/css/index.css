@@ -22,12 +22,14 @@ body {
   padding-top: 5vh;
   font-size: 3em;
 }
-.settingsicon {
+.checkbox {
+  height: 2vh;
+  width: 2vw;
+}
+.darktheme {
   padding-top: 5vh;
   padding-right: 5vh;
-  height: 5vh;
-  width: 5vh;
-  color: rgba(0, 0, 0, 0);
+  font-size: 1em;
 }
 /* add todoList button styles starting */
 .addTodoList {
@@ -43,6 +45,7 @@ body {
 .addTodoList:hover {
   transform: scale(1.1, 1.1);
   box-shadow: 0 0 7px 1px rgba(180, 180, 180, 0.5);
+  cursor: pointer;
 }
 /* add todo button styles ending */
 
@@ -58,7 +61,7 @@ body {
 }
 .todoList {
   border: solid rgba(0, 0, 0, 0.2) 1px;
-  border-radius: 20px;
+  border-radius: 8px;
   margin: 2%;
   width: 300px;
 }
@@ -71,15 +74,17 @@ body {
   font-weight: 500;
   margin: 5%;
   padding: 2%;
+  border-bottom: 1px solid lightgray;
 }
 .deleteButton {
-  height: 20px;
-  width: 20px;
+  height: 14px;
+  width: 14px;
 }
 .todoItem {
   display: flex;
   flex-wrap: wrap;
   margin: 5%;
+  font-weight: 100;
 }
 #tickbox {
   height: 10px;
@@ -101,24 +106,30 @@ body {
 }
 .popUpBox {
   border: solid rgba(0, 0, 0, 0.2) 1px;
-  border-radius: 30px;
+  border-radius: 8px;
   margin-left: 35%;
   position: relative;
-  width: 400px;
+  width: 450px;
   top: 25%;
   font-size: 20px;
   animation: animatezoom 0.6s;
   background: white;
 }
+.todoform {
+  padding-left: 2vw;
+  padding-right: 2vw;
+}
 .closeButton {
-  margin-left: 90%;
+  margin-left: 92%;
   padding-top: 0%;
   border-radius: 50px;
 }
 .formHeading {
   font-weight: 500;
-  padding: 2%;
-  border-bottom: solid black 1px;
+  border-bottom: solid rgb(175, 175, 175) 1px;
+}
+.label {
+  font-weight: 300;
 }
 @keyframes animatezoom {
   from {
@@ -133,7 +144,7 @@ body {
 }
 .textbox {
   margin: 4%;
-  width: 300px;
+  width: 270px;
   height: 30px;
   font-size: 20px;
   background: none;
@@ -143,14 +154,16 @@ body {
 
 .todobtns {
   width: 100%;
-  position: absolute;
-  left: 4em;
+  position: relative;
   bottom: 2em;
+  justify-content: space-between;
 }
 .addButton,
 .removeButton,
 .saveButton {
-  margin-left: 10%;
+  margin-left: 1.6vw;
   padding-top: 10px;
+  width: 1em;
+  font-size: 5em;
 }
 /* form styles ending */
