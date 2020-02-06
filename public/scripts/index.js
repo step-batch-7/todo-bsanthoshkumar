@@ -23,7 +23,7 @@ const togglePopUp = () => {
   const displayValue = popUpDivision.style.display;
   if (displayValue === 'none') {
     popUpDivision.style.display = 'block';
-    popUpDivision.innerHTML = createForm;
+    popUpDivision.innerHTML = createForm();
     return;
   }
   popUpDivision.style.display = 'none';

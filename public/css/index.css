@@ -187,7 +187,8 @@ body {
   padding-right: 2vw;
 }
 .closeButton {
-  margin-left: 92%;
+  margin-left: 27vw;
+  margin-top: 1vh;
   padding-top: 0%;
   border-radius: 50px;
 }
