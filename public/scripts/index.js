@@ -4,18 +4,18 @@ const getElement = selector => document.querySelector(selector);
 const createForm = () => {
   return `
   <div class="popUpBox animateZoom">
-        <form action="addTodoList" method="post" class="todoform">
-          <button type="button" class="closeButton" onclick="togglePopUp()">X</button>
-          <h4 class="formHeading">Create ToDo</h4>
-          <span class="label">Title:</span>
-          <input type="text" name="title" id="title" class="textbox" required /> <br />
-          <div id="items"></div>
-          <div class="todobtns">
-            <input type="button" value="add item" onclick="addItem()" class="addButton" />
-            <input type="button" value="remove item" onclick="removeItem()" class="removeButton" />
-            <input type="submit" value="save" class="saveButton" />
-          </div>
-        </form>
+    <form action="addTodoList" method="post" class="todoform">
+      <button type="button" class="closeButton" onclick="togglePopUp()">X</button>
+      <h4 class="formHeading">Create ToDo</h4>
+      <span class="label">Title:</span>
+      <input type="text" name="title" id="title" class="textbox" required /> <br />
+      <div id="items"></div>
+      <div class="todobtns">
+        <input type="button" value="add item" onclick="addItem()" class="addButton" />
+        <input type="button" value="remove item" onclick="removeItem()" class="removeButton" />
+        <input type="submit" value="save" class="saveButton" />
+      </div>
+    </form>
       </div>`;
 };
 const togglePopUp = () => {
@@ -23,7 +23,7 @@ const togglePopUp = () => {
   const displayValue = popUpDivision.style.display;
   if (displayValue === 'none') {
     popUpDivision.style.display = 'block';
-    popUpDivision.innerHTML = createForm();
+    popUpDivision.innerHTML = createForm;
     return;
   }
   popUpDivision.style.display = 'none';
@@ -46,6 +46,7 @@ const createItem = id => {
   input.id = `task${id}`;
   input.classList.add('textbox');
   label.innerText = `Task${id}:`;
+  label.classList.add('label');
   return { input, label };
 };
 

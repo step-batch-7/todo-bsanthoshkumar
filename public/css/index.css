@@ -22,10 +22,33 @@ body {
   padding-top: 5vh;
   font-size: 3em;
 }
+/* toggle button starts*/
 .checkbox {
-  height: 2vh;
-  width: 2vw;
+  display: none;
 }
+
+.checkbox + label > div {
+  height: 32px;
+  width: 50px;
+  background: rgb(219, 219, 219);
+  border-radius: 15px;
+  display: flex;
+  align-items: center;
+  padding: 0 2px;
+  cursor: pointer;
+}
+
+.checkbox:checked + label > div {
+  flex-direction: row-reverse;
+}
+
+.checkbox + label > div > div {
+  height: 28px;
+  width: 28px;
+  border-radius: 50%;
+  background: gray;
+}
+/* toggle button ends */
 .darktheme {
   padding-top: 5vh;
   padding-right: 5vh;
@@ -82,7 +105,6 @@ body {
 }
 .todoItem {
   display: flex;
-  flex-wrap: wrap;
   margin: 5%;
   font-weight: 100;
 }
@@ -91,7 +113,7 @@ body {
   width: 10px;
   border: solid black 1px;
   margin: 1%;
-  margin-right: 10%;
+  margin-right: 5%;
 }
 /* container styles ending */
 
@@ -144,7 +166,7 @@ body {
 }
 .textbox {
   margin: 4%;
-  width: 270px;
+  width: 300px;
   height: 30px;
   font-size: 20px;
   background: none;
