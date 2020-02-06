@@ -3,15 +3,22 @@ const getElement = selector => document.querySelector(selector);
 
 const togglePopUp = () => {
   const popUpDivision = getElement('#popUpDivision');
-  const addTodoList = getElement('.addTodoList');
   const displayValue = popUpDivision.style.display;
   if (displayValue === 'none') {
     popUpDivision.style.display = 'block';
-    addTodoList.style.display = 'none';
     return;
   }
   popUpDivision.style.display = 'none';
-  addTodoList.style.display = 'block';
+};
+
+const toggleBackground = () => {
+  const body = document.body;
+  console.log(body.classList.contains('blackbg'));
+  if (body.classList.contains('blackbg')) {
+    body.classList.remove('blackbg');
+    return;
+  }
+  body.classList.add('blackbg');
 };
 
 const createItem = id => {
@@ -69,7 +76,7 @@ const createTodoList = todoList => {
   const { id, title, items } = todoList;
   return `
   <div class="todoList" id="${id}">
-    <div class="header">${title}
+    <div class="heading">${title}
     <img src="assets/deleteicon.png" alt="no image" class="deleteButton" onclick="deleteTodoList('${id}')"/>
     </div>
     <hr />

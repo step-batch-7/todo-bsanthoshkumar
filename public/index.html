@@ -6,8 +6,15 @@
     <script src="./scripts/index.js"></script>
   </head>
   <body onload="main()">
-    <h1 align="center">ToDo</h1>
-    <hr />
+    <div class="header">
+      <div class="addTodoList" onclick="togglePopUp()">
+        <p style="margin-top: 30%;">+</p>
+      </div>
+      <div class="title"><span>ToDo</span></div>
+      <div>
+        <img class="settingsicon" src="./assets/seetingsicon.png" alt="no image" onclick="toggleBackground()" />
+      </div>
+    </div>
     <div id="container"></div>
     <div id="popUpDivision">
       <div class="popUpBox animateZoom">
@@ -23,9 +30,6 @@
           </div>
         </form>
       </div>
-    </div>
-    <div class="addTodoList" onclick="togglePopUp()">
-      <p style="margin-top: 30%;">+</p>
     </div>
   </body>
 </html>
