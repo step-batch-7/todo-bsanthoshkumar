@@ -13,7 +13,6 @@ const togglePopUp = () => {
 
 const toggleBackground = () => {
   const body = document.body;
-  console.log(body.classList.contains('blackbg'));
   if (body.classList.contains('blackbg')) {
     body.classList.remove('blackbg');
     return;
@@ -25,10 +24,10 @@ const createItem = id => {
   const input = createElement('input');
   const label = createElement('label');
   input.type = 'text';
-  input.name = `item${id}`;
-  input.id = `item${id}`;
+  input.name = `task${id}`;
+  input.id = `task${id}`;
   input.classList.add('textbox');
-  label.innerText = `Item${id}:`;
+  label.innerText = `Task${id}:`;
   return { input, label };
 };
 
@@ -68,19 +67,19 @@ const sendHttpPost = (url, data, callback) => {
   request.send(data);
 };
 
-const createTasks = items => {
-  return items.map(item => `<div class="todoItem"><div id="tickbox"></div>${item.value}</div>`);
+const createTasks = tasks => {
+  return tasks.map(task => `<div class="todoItem"><div id="tickbox"></div>${task.name}</div>`);
 };
 
 const createTodoList = todoList => {
-  const { id, title, items } = todoList;
+  const { id, title, tasks } = todoList;
   return `
   <div class="todoList" id="${id}">
     <div class="heading">${title}
     <img src="assets/deleteicon.png" alt="no image" class="deleteButton" onclick="deleteTodoList('${id}')"/>
     </div>
     <hr />
-    ${createTasks(items).join('\n')}
+    ${createTasks(tasks).join('\n')}
   </div>`;
 };
 
