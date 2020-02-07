@@ -130,6 +130,7 @@ body {
 .name {
   font-size: 1.1em;
   flex-grow: 1;
+  outline: none;
 }
 .tickbox {
   height: 1vh;

@@ -92,7 +92,7 @@ const createTasks = (id, tasks) => {
     <div class="todoItem">
       <div class="tickbox ${task.isDone ? 'checked' : ''}" onclick="toggleTask(${id},${task.id})">
       </div>
-      <div class="name">${task.name}</div>
+      <div class="name" contenteditable="true" onkeypress="editTask(${id},${task.id},this)">${task.name}</div>
       <img src="./assets/deleteicon.png" alt="no image" class="deleteButton" onclick="deleteTask(${id},${task.id})"/>
     </div>`;
   });
@@ -140,6 +140,13 @@ const editTitle = (todoListId, span) => {
   if (event.key === 'Enter' && span.innerText !== '') {
     const title = span.innerText;
     sendHttpPost('/editTitle', [todoListId, title], showTodoLists);
+  }
+};
+
+const editTask = (todoListId, taskId, division) => {
+  if (event.key === 'Enter' && division.innerText !== '') {
+    const name = division.innerText;
+    sendHttpPost('/editTask', [todoListId, taskId, name], showTodoLists);
   }
 };
 
