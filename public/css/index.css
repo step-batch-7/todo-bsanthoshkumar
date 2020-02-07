@@ -103,10 +103,9 @@ body {
 }
 .title {
   outline: none;
-                                                                                                                                                                                                                                                                                                                                                                                                                                                    word-break: break-all;
 }
 .deleteButton {
-  height: 2.3vh;
+  height: 2.5vh;
   width: 1.5vw;
   margin-top: 0.5vh;
   margin-right: 0.2vw;
@@ -130,8 +129,7 @@ body {
 }
 .name {
   font-size: 1.1em;
-  flex-grow: 1;
-  word-break: break-all;
+  width: 17vw;
   outline: none;
 }
 .tickbox {
@@ -151,6 +149,7 @@ body {
 }
 .todoItem:hover > img {
   display: inline;
+  height: 2vh;
 }
 .newTaskBox {
   margin-left: 2vw;
