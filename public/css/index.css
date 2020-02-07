@@ -103,6 +103,7 @@ body {
 }
 .title {
   outline: none;
+                                                                                                                                                                                                                                                                                                                                                                                                                                                    word-break: break-all;
 }
 .deleteButton {
   height: 2.3vh;
@@ -130,6 +131,7 @@ body {
 .name {
   font-size: 1.1em;
   flex-grow: 1;
+  word-break: break-all;
   outline: none;
 }
 .tickbox {

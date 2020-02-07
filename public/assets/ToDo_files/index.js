@@ -92,7 +92,7 @@ const createTasks = (id, tasks) => {
     <div class="todoItem">
       <div class="tickbox ${task.isDone ? 'checked' : ''}" onclick="toggleTask(${id},${task.id})">
       </div>
-      <div class="name">${task.name}</div>
+                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                <div class="name" contenteditable="true" onkeypress="editTask(${id},${task.id},this)">${task.name}</div>
       <img src="./assets/deleteicon.png" alt="no image" class="deleteButton" onclick="deleteTask(${id},${task.id})"/>
     </div>`;
   });
@@ -102,11 +102,12 @@ const createTodoList = todoList => {
   const { id, title, tasks } = todoList;
   return `
   <div class="todoList" id="${id}">
-    <div class="heading">${title}
+    <div class="heading">
+    <span contenteditable="true" class="title" onkeypress="editTitle(${id},this)">${title}</span>
     <img src="assets/deleteicon.png" alt="no image" class="deleteButton" onclick="deleteTodoList(${id})"/>
     </div>
     ${createTasks(id, tasks).join('\n')}
-    <input type='text' placeHolder="New Task..." class="newTaskBox" onkeypress="addTask(${id})"/>
+    <input type='text' placeHolder="New Task..." class="newTaskBox" onkeypress="addTask(${id},this)"/>
   </div>`;
 };
 
@@ -128,15 +129,31 @@ const deleteTask = (todoListId, taskId) => {
   sendHttpPost('/deleteTask', [todoListId, taskId], showTodoLists);
 };
 
-const addTask = todoListId => {
-  const newTask = document.getElementById(todoListId).lastElementChild;
-  if (event.key === 'Enter' && newTask.value !== '') {
-    const name = newTask.value;
+const addTask = (todoListId, textbox) => {
+  if (event.key === 'Enter' && textbox.value !== '') {
+    const name = textbox.value;
     sendHttpPost('/addTask', [todoListId, name], showTodoLists);
   }
 };
+
+const editTitle = (todoListId, span) => {
+  if (event.key === 'Enter' && span.innerText !== '') {
+    const title = span.innerText;
+    sendHttpPost('/editTitle', [todoListId, title], showTodoLists);
+  }
+};
+
+const editTask = (todoListId, taskId, division) => {
+  if (event.key === 'Enter' && division.innerText !== '') {
+    const name = division.innerText;
+    sendHttpPost('/editTask', [todoListId, taskId, name], showTodoLists);
+  }
+};
+
 const loadTodoLists = () => sendHttpGet('/getTodoLists', showTodoLists);
 
 const main = () => {
   loadTodoLists();
 };
+
+main();
