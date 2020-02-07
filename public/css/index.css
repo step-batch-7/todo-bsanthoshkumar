@@ -17,7 +17,7 @@ body {
   border-bottom: solid black 1px;
   height: 15vh;
 }
-.title {
+.appTitle {
   color: rgba(0, 0, 0, 0.8);
   padding-top: 5vh;
   font-size: 3.5em;
@@ -100,6 +100,9 @@ body {
   margin: 1.5vw;
   padding-bottom: 1vh;
   border-bottom: 1px solid lightgray;
+}
+.title {
+  outline: none;
 }
 .deleteButton {
   height: 2.3vh;
