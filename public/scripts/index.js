@@ -5,7 +5,7 @@ const createForm = () => {
   return `
   <div class="popUpBox animateZoom">
     <form action="addTodoList" method="post" class="todoform">
-      <button type="button" class="closeButton" onclick="togglePopUp()">X</button>
+      <img src="./assets/closeicon.png" alt="no image" onclick="togglePopUp()" class="closeButton"/>
       <h4 class="formHeading">Create ToDo</h4>
       <span class="label">Title:</span>
       <input type="text" name="title" id="title" class="textbox" required /> <br />
@@ -92,7 +92,9 @@ const createTasks = (id, tasks) => {
     <div class="todoItem">
       <div class="tickbox ${task.isDone ? 'checked' : ''}" onclick="toggleTask(${id},${task.id})">
       </div>
-      <div class="name" contenteditable="true" onkeypress="editTask(${id},${task.id},this)">${task.name}</div>
+      <div class="${task.isDone ? 'taskDone' : 'taskNotDone'}" contenteditable="true" onkeypress="editTask(${id},${
+      task.id
+    },this)">${task.name}</div>
       <img src="./assets/deleteicon.png" alt="no image" class="deleteButton" onclick="deleteTask(${id},${task.id})"/>
     </div>`;
   });
