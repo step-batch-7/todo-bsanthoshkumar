@@ -1,5 +1,6 @@
 const createElement = elementName => document.createElement(elementName);
 const getElement = selector => document.querySelector(selector);
+const getElements = selector => document.querySelectorAll(selector);
 
 const createForm = () => {
   return `
@@ -89,10 +90,10 @@ const sendHttpPost = (url, data, callback) => {
 const createTasks = (id, tasks) => {
   return tasks.map(task => {
     return `
-    <div class="todoItem">
+    <div class="todoTask">
       <div class="tickbox ${task.isDone ? 'checked' : ''}" onclick="toggleTask(${id},${task.id})">
       </div>
-      <div class="${task.isDone ? 'taskDone' : 'taskNotDone'}" contenteditable="true" onkeypress="editTask(${id},${
+      <div class="taskName ${task.isDone ? 'taskDone' : ''}" contenteditable="true" onkeypress="editTask(${id},${
       task.id
     },this)">${task.name}</div>
       <img src="./assets/deleteicon.png" alt="no image" class="deleteButton" onclick="deleteTask(${id},${task.id})"/>
@@ -121,9 +122,6 @@ const showTodoLists = text => {
   container.innerHTML = todoListsAsHtml;
 };
 
-const searchByTitle = text => {
-  // const todoLists =
-};
 const deleteTodoList = todoListId => sendHttpPost('/deleteTodoList', todoListId, showTodoLists);
 
 const toggleTask = (todoListId, taskId) => {
@@ -155,11 +153,27 @@ const editTask = (todoListId, taskId, division) => {
   }
 };
 
+const searchByTask = (todoTasks, text) => {
+  todoTasks.forEach(todoTask => {
+    const taskName = todoTask.querySelector('.taskName');
+    console.log(taskName.innerText, taskName.innerText.includes(text));
+    taskName.innerText.includes(text) ? todoTask.classList.remove('hidden') : todoTask.classList.add('hidden');
+  });
+};
+
+const searchByTitle = (todoLists, text) => {
+  todoLists.forEach(todoList => {
+    const title = todoList.querySelector('.title');
+    title.innerText.includes(text) ? todoList.classList.remove('hidden') : todoList.classList.add('hidden');
+  });
+};
+
 const search = textbox => {
-  const handlers = { title: searchByTitle, task: searchByTask };
-  const searchOn = getElement('#selectBox').value;
-  const text = textbox.value;
-  handlers[searchOn](text);
+  const search = getElement('#search');
+  const handler = search.checked ? searchByTask : searchByTitle;
+  const className = search.checked ? '.todoTask' : '.todoList';
+  const elements = Array.from(getElements(className));
+  handler(elements, textbox.value);
 };
 
 const loadTodoLists = () => sendHttpGet('/getTodoLists', showTodoLists);
