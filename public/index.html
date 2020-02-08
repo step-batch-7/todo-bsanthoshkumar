@@ -13,11 +13,14 @@
           <input type="text" class="searchText" oninput="search(this)" />
         </div>
         <div class="searchButtons">
-          Search By
-          <div>
-            <input type="radio" name="search" checked /> Title <br />
-            <input type="radio" name="search" /> Task
-          </div>
+          <span class="text">Search&nbsp;</span>
+          <input type="checkbox" class="search" id="search" />
+          <label for="search">
+            <div>
+              <span class="todo">Todo</span>
+              <span class="task">Task</span>
+            </div>
+          </label>
         </div>
       </div>
       <div class="newTodoList">
@@ -25,7 +28,6 @@
           <img src="./assets/addicon.png" alt="no image" class="addicon" />
         </div>
       </div>
-
       <div class="toggleButton">
         <input class="checkbox" type="checkbox" onclick="toggleBackground()" id="check" />
         <label for="check">

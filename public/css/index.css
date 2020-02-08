@@ -31,17 +31,15 @@ body {
 .searchText {
   margin-right: 0.3vw;
   width: 20vw;
-  border-radius: 8px;
   font-size: 1.2em;
   font-weight: 300;
+  border: none;
   border-bottom: solid black 1px;
   outline: none;
 }
-.selectBox {
-  font-size: 1em;
-  background: none;
-  outline: none;
-  border: none;
+.text {
+  margin-top: 0.5vh;
+  font-size: 1.1em;
 }
 .searchButtons {
   font-size: 1.1em;
@@ -51,7 +49,41 @@ body {
 .hidden {
   display: none;
 }
-/* toggle button starts*/
+/* search toggle button starts */
+.search {
+  display: none;
+}
+.search + label > div {
+  height: 29px;
+  width: 90px;
+  border-radius: 15px;
+  background: rgb(219, 219, 219);
+  display: flex;
+  align-items: center;
+  justify-content: space-around;
+}
+
+.search + label > div > .todo,
+.search + label > div > .task {
+  user-select: none;
+  border-radius: 15px;
+  padding: 2px;
+}
+
+.search + label > div > .todo {
+  background: rgba(130, 130, 130, 0.7);
+}
+
+.search:checked + label > div > .todo {
+  background: none;
+}
+
+.search:checked + label > div > .task {
+  background: rgba(130, 130, 130, 0.7);
+}
+/* search toggle button starts */
+
+/* dark theme toggle button starts*/
 
 .toggleButton {
   padding-top: 4vh;
@@ -83,11 +115,16 @@ body {
   width: 2vw;
   border-radius: 50%;
   background: gray;
+  background-image: url(../assets/sun.png);
+  background-size: cover;
+}
+.checkbox:checked + label > div > div {
+  background-image: url(../assets/moon.png);
 }
 .modeName {
   padding-top: 1vh;
 }
-/* toggle button ends */
+/* dark theme toggle button ends */
 
 /* add todoList button styles starting */
 .newTodoList {
