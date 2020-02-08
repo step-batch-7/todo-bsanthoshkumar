@@ -152,6 +152,12 @@ const editTask = (todoListId, taskId, division) => {
   }
 };
 
+const search = textbox => {
+  const handlers = { title: '/searchByTitle', task: '/searchByTask' };
+  const searchOn = getElement('#selectBox').value;
+  const text = textbox.value;
+  sendHttpPost(handlers[searchOn], text, showTodoLists);
+};
 const loadTodoLists = () => sendHttpGet('/getTodoLists', showTodoLists);
 
 const main = () => {
