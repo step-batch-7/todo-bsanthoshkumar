@@ -177,9 +177,7 @@ body {
   justify-content: space-between;
   font-size: 1.4em;
   font-weight: 500;
-  margin-left: 1.5vw;
-  margin-top: 2vh;
-  margin-right: 1.5vw;
+  margin: 2vh 1.5vw 0 1.5vw;
   padding-bottom: 2vh;
   border-bottom: 1px solid lightgray;
 }
@@ -221,18 +219,16 @@ body {
   height: 1vh;
   width: 0.7vw;
   border: solid black 1px;
-  margin-left: 0.4vw;
-  margin-top: 0.8vh;
-  margin-right: 1vw;
+  margin: 0.8vh 1vw 0 0.4vw;
   flex-shrink: 0;
 }
 .tickbox:hover {
   cursor: pointer;
 }
-.todoItem > img {
+.todoTask > img {
   display: none;
 }
-.todoItem:hover > img {
+.todoTask:hover > img {
   display: inline;
   height: 2vh;
 }

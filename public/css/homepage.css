@@ -1,0 +1,7 @@
+.loginBox {
+  margin: 25vh 0 0 35vw;
+  border: solid black 1px;
+  width: 30vw;
+  height: 50vh;
+  border-radius: 8px;
+}
