@@ -31,11 +31,11 @@ const togglePopUp = () => {
 
 const toggleBackground = () => {
   const body = document.body;
-  if (body.classList.contains('blackbg')) {
-    body.classList.remove('blackbg');
+  if (body.classList.contains('darkTheme')) {
+    body.classList.remove('darkTheme');
     return;
   }
-  body.classList.add('blackbg');
+  body.classList.add('darkTheme');
 };
 
 const createItem = id => {
@@ -121,6 +121,9 @@ const showTodoLists = text => {
   container.innerHTML = todoListsAsHtml;
 };
 
+const searchByTitle = text => {
+  // const todoLists =
+};
 const deleteTodoList = todoListId => sendHttpPost('/deleteTodoList', todoListId, showTodoLists);
 
 const toggleTask = (todoListId, taskId) => {
@@ -153,11 +156,12 @@ const editTask = (todoListId, taskId, division) => {
 };
 
 const search = textbox => {
-  const handlers = { title: '/searchByTitle', task: '/searchByTask' };
+  const handlers = { title: searchByTitle, task: searchByTask };
   const searchOn = getElement('#selectBox').value;
   const text = textbox.value;
-  sendHttpPost(handlers[searchOn], text, showTodoLists);
+  handlers[searchOn](text);
 };
+
 const loadTodoLists = () => sendHttpGet('/getTodoLists', showTodoLists);
 
 const main = () => {
