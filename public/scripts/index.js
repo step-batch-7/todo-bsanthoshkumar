@@ -65,28 +65,6 @@ const removeItem = () => {
   items.removeChild(items.lastChild);
 };
 
-const sendHttpGet = (url, callback) => {
-  const request = new XMLHttpRequest();
-  request.open('GET', url);
-  request.onload = function() {
-    if (this.status === 200) {
-      callback(this.responseText);
-    }
-  };
-  request.send();
-};
-
-const sendHttpPost = (url, data, callback) => {
-  const request = new XMLHttpRequest();
-  request.open('POST', url);
-  request.onload = function() {
-    if (this.status === 200) {
-      callback(this.responseText);
-    }
-  };
-  request.send(data);
-};
-
 const createTasks = (id, tasks) => {
   return tasks.map(task => {
     return `
@@ -95,7 +73,7 @@ const createTasks = (id, tasks) => {
       </div>
       <div class="taskName ${task.isDone ? 'taskDone' : ''}" contenteditable="true" onkeypress="editTask(${id},${
       task.id
-    },this)">${task.name}</div>
+      },this)">${task.name}</div>
       <img src="./assets/deleteicon.png" alt="no image" class="deleteButton" onclick="deleteTask(${id},${task.id})"/>
     </div>`;
   });
@@ -156,7 +134,6 @@ const editTask = (todoListId, taskId, division) => {
 const searchByTask = (todoTasks, text) => {
   todoTasks.forEach(todoTask => {
     const taskName = todoTask.querySelector('.taskName');
-    console.log(taskName.innerText, taskName.innerText.includes(text));
     taskName.innerText.includes(text) ? todoTask.classList.remove('hidden') : todoTask.classList.add('hidden');
   });
 };
