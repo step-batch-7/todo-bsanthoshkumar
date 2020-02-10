@@ -1,7 +1,36 @@
 .loginBox {
-  margin: 25vh 0 0 35vw;
-  border: solid black 1px;
+  margin: 20vh 0 0 35vw;
+  border: solid rgba(0, 0, 0, 0.2) 1px;
   width: 30vw;
   height: 50vh;
   border-radius: 8px;
+}
+.loginBox:hover {
+  box-shadow: 0 0 7px 1px rgba(131, 131, 131, 0.5);
+}
+.username,
+.password {
+  width: 20vw;
+  height: 3vh;
+  font-size: 1.2em;
+  color: rgba(0, 0, 0, 0.6);
+  border: none;
+  outline: none;
+  border-bottom: solid rgba(0, 0, 0, 0.2) 1px;
+}
+.username {
+  margin: 15vh 0 0 5vw;
+}
+.password {
+  margin: 5vh 0 0 5vw;
+}
+.login {
+  margin: 8vh 0 0 5vw;
+  width: 20vw;
+  height: 4vh;
+  font-size: 1.2em;
+  color: rgba(0, 0, 0, 0.5);
+  outline: none;
+  border-radius: 20px;
+  background-color: rgba(0, 0, 0, 0.2);
 }
