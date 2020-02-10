@@ -2,16 +2,14 @@
 <html lang="en">
 
 <head>
-  <title>Login Page</title>
-  <link rel="stylesheet" href="./css/loginAndSignIn.css" />
-  <script src="./scripts/login.js"></script>
-  <script src="./scripts/xmlHttpRequests.js"></script>
+  <link rel="stylesheet" href="./css/loginAndSignIn.css">
+  <title>Sign In</title>
 </head>
 
 <body>
   <div class="container">
-    <p class="heading">Welcome</p>
-    <form action="login" method="post">
+    <p class="heading">New user signIn</p>
+    <form action="signIn" method="post">
       <input type="text" name="username" placeholder="Username" class="username"
         autocomplete="off" required />
       <input type="password" name="password" placeholder="Password"
@@ -20,9 +18,10 @@
         onclick="togglePasswordVisibility()" />
       <img src="./assets/visibleicon.png" alt="no image"
         class="visibleIcon hide" onclick="togglePasswordVisibility()" />
-      <button class="submit">Login</button>
+      <div></div>
+      <button class="submit">Sign In</button>
     </form>
-    <a href="./signIn.html" class="signUpLink">create an account</a>
+    <a href="./login.html" class="loginLink">Already have an account</a>
   </div>
 </body>
 
