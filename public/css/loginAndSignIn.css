@@ -9,7 +9,6 @@ body {
   margin: 20vh 0 0 35vw;
   border: solid rgba(0, 0, 0, 0.2) 1px;
   width: 30vw;
-  height: 50vh;
   border-radius: 8px;
   display: flex;
   flex-direction: column;
@@ -17,6 +16,12 @@ body {
 }
 .container:hover {
   box-shadow: 0 0 7px 1px rgba(131, 131, 131, 0.5);
+}
+.loginBlock {
+  height: 50vh;
+}
+.signInBlock {
+  height: 60vh;
 }
 .heading {
   font-size: 1.3em;
@@ -44,7 +49,7 @@ body {
 .visibleIcon {
   height: 3vh;
 }
-.hide{
+.hide {
   display: none;
 }
 .submit {
@@ -59,14 +64,16 @@ body {
 }
 .invisibleIcon:hover,
 .visibleIcon:hover,
-.login:hover{
+.login:hover {
   cursor: pointer;
 }
-.signUpLink,.loginLink {
+.signUpLink,
+.loginLink {
   text-align: center;
   font-size: 1.2em;
   color: rgba(0, 0, 0, 0.4);
 }
-.signUpLink:hover,.loginLink:hover{
+.signUpLink:hover,
+.loginLink:hover {
   color: rgba(0, 0, 0, 0.7);
 }

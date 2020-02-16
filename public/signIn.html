@@ -1,28 +1,33 @@
 <!DOCTYPE html>
 <html lang="en">
+  <head>
+    <link rel="stylesheet" href="./css/loginAndSignIn.css" />
+    <title>Sign In</title>
+  </head>
 
-<head>
-  <link rel="stylesheet" href="./css/loginAndSignIn.css">
-  <title>Sign In</title>
-</head>
-
-<body>
-  <div class="container">
-    <p class="heading">New user signIn</p>
-    <form action="signIn" method="post">
-      <input type="text" name="username" placeholder="Username" class="username"
-        autocomplete="off" required />
-      <input type="password" name="password" placeholder="Password"
-        class="password" required />
-      <img src="./assets/invisibleicon.png" alt="no image" class="invisibleIcon"
-        onclick="togglePasswordVisibility()" />
-      <img src="./assets/visibleicon.png" alt="no image"
-        class="visibleIcon hide" onclick="togglePasswordVisibility()" />
-      <div></div>
-      <button class="submit">Sign In</button>
-    </form>
-    <a href="./login.html" class="loginLink">Already have an account</a>
-  </div>
-</body>
-
+  <body>
+    <div class="container signInBlock">
+      <p class="heading">New user signIn</p>
+      <form action="signIn" method="post">
+        <input type="text" name="name" placeholder="Name" class="username" required />
+        <input type="text" name="username" placeholder="Username" class="username" required />
+        <input type="password" name="password" placeholder="Password" class="password" required />
+        <img
+          src="./assets/invisibleicon.png"
+          alt="no image"
+          class="invisibleIcon"
+          onclick="togglePasswordVisibility()"
+        />
+        <img
+          src="./assets/visibleicon.png"
+          alt="no image"
+          class="visibleIcon hide"
+          onclick="togglePasswordVisibility()"
+        />
+        <div></div>
+        <button class="submit">Sign In</button>
+      </form>
+      <a href="./login.html" class="loginLink">Already have an account</a>
+    </div>
+  </body>
 </html>
