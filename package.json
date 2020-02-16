@@ -9,8 +9,8 @@
   },
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
-    "start": "node server.js",
-    "live": "nodemon server.js"
+    "start": "export DATA_STORE=./dataStore/todos.json;node server.js",
+    "live": "export DATA_STORE=./dataStore/todos.json;nodemon server.js"
   },
   "repository": {
     "type": "git",
