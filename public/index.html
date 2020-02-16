@@ -1,48 +1,44 @@
 <!DOCTYPE html>
 <html lang="en">
+  <head>
+    <title>ToDo</title>
+    <link rel="stylesheet" href="./css/index.css" />
+    <script src="./scripts/index.js"></script>
+  </head>
 
-<head>
-  <title>ToDo</title>
-  <link rel="stylesheet" href="./css/index.css" />
-  <script src="./scripts/index.js"></script>
-  <script src="./scripts/xmlHttpRequests.js"></script>
-</head>
-
-<body onload="main()">
-  <div class="header">
-    <div class="appTitle"><span>TODO</span></div>
-    <div class="searchbar" id="searchbar">
-      <div>
-        <input type="text" class="searchText" oninput="search(this)" />
+  <body onload="main()">
+    <div class="header">
+      <div class="appTitle"><span>TODO</span></div>
+      <div class="searchbar" id="searchbar">
+        <div>
+          <input type="text" class="searchText" oninput="search(this)" />
+        </div>
+        <div class="searchButtons">
+          <span class="text">Search&nbsp;</span>
+          <input type="checkbox" class="search" id="search" />
+          <label for="search">
+            <div>
+              <span class="todo">Todo</span>
+              <span class="task">Task</span>
+            </div>
+          </label>
+        </div>
       </div>
-      <div class="searchButtons">
-        <span class="text">Search&nbsp;</span>
-        <input type="checkbox" class="search" id="search" />
-        <label for="search">
+      <div class="newTodoList">
+        <div class="addTodoList" onclick="togglePopUp()">
+          <img src="./assets/addicon.png" alt="no image" class="addicon" />
+        </div>
+      </div>
+      <div class="toggleButton">
+        <input class="checkbox" type="checkbox" onclick="toggleBackground()" id="check" />
+        <label for="check">
           <div>
-            <span class="todo">Todo</span>
-            <span class="task">Task</span>
+            <div></div>
           </div>
         </label>
       </div>
     </div>
-    <div class="newTodoList">
-      <div class="addTodoList" onclick="togglePopUp()">
-        <img src="./assets/addicon.png" alt="no image" class="addicon" />
-      </div>
-    </div>
-    <div class="toggleButton">
-      <input class="checkbox" type="checkbox" onclick="toggleBackground()"
-        id="check" />
-      <label for="check">
-        <div>
-          <div></div>
-        </div>
-      </label>
-    </div>
-  </div>
-  <div id="container"></div>
-  <div id="popUpDivision"></div>
-</body>
-
+    <div id="container"></div>
+    <div id="popUpDivision"></div>
+  </body>
 </html>

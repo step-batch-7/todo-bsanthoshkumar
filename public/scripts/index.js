@@ -2,6 +2,16 @@ const createElement = elementName => document.createElement(elementName);
 const getElement = selector => document.querySelector(selector);
 const getElements = selector => document.querySelectorAll(selector);
 
+const newRequest = function(method, url, data, callBack) {
+  const req = new XMLHttpRequest();
+  req.open(method, url);
+  req.setRequestHeader('content-type', 'application/json');
+  req.onload = function() {
+    callBack(JSON.parse(this.response));
+  };
+  req.send(JSON.stringify(data));
+};
+
 const createForm = () => {
   return `
   <div class="popUpBox animateZoom">
@@ -73,7 +83,7 @@ const createTasks = (id, tasks) => {
       </div>
       <div class="taskName ${task.isDone ? 'taskDone' : ''}" contenteditable="true" onkeypress="editTask(${id},${
       task.id
-      },this)">${task.name}</div>
+    },this)">${task.name}</div>
       <img src="./assets/deleteicon.png" alt="no image" class="deleteButton" onclick="deleteTask(${id},${task.id})"/>
     </div>`;
   });
@@ -94,40 +104,40 @@ const createTodoList = todoList => {
 
 const showTodoLists = text => {
   const container = getElement('#container');
-  const todoLists = JSON.parse(text);
+  const todoLists = text;
   const todoListsAsHtml = todoLists.map(createTodoList).join('\n');
   container.innerHTML = '';
   container.innerHTML = todoListsAsHtml;
 };
 
-const deleteTodoList = todoListId => sendHttpPost('/deleteTodoList', todoListId, showTodoLists);
+const deleteTodoList = todoListId => newRequest('POST', '/deleteTodoList', { todoListId }, showTodoLists);
 
 const toggleTask = (todoListId, taskId) => {
-  sendHttpPost('/toggleTask', [todoListId, taskId], showTodoLists);
+  newRequest('POST', '/toggleTask', { todoListId, taskId }, showTodoLists);
 };
 
 const deleteTask = (todoListId, taskId) => {
-  sendHttpPost('/deleteTask', [todoListId, taskId], showTodoLists);
+  newRequest('POST', '/deleteTask', { todoListId, taskId }, showTodoLists);
 };
 
 const addTask = (todoListId, textbox) => {
   if (event.key === 'Enter' && textbox.value !== '') {
-    const name = textbox.value;
-    sendHttpPost('/addTask', [todoListId, name], showTodoLists);
+    const taskName = textbox.value;
+    newRequest('POST', '/addTask', { todoListId, taskName }, showTodoLists);
   }
 };
 
 const editTitle = (todoListId, span) => {
   if (event.key === 'Enter' && span.innerText !== '') {
     const title = span.innerText;
-    sendHttpPost('/editTitle', [todoListId, title], showTodoLists);
+    newRequest('POST', '/editTitle', { todoListId, title }, showTodoLists);
   }
 };
 
 const editTask = (todoListId, taskId, division) => {
   if (event.key === 'Enter' && division.innerText !== '') {
     const name = division.innerText;
-    sendHttpPost('/editTask', [todoListId, taskId, name], showTodoLists);
+    newRequest('POST', '/editTask', { todoListId, taskId, name }, showTodoLists);
   }
 };
 
@@ -153,7 +163,7 @@ const search = textbox => {
   handler(elements, textbox.value);
 };
 
-const loadTodoLists = () => sendHttpGet('/getTodoLists', showTodoLists);
+const loadTodoLists = () => newRequest('GET', '/getTodoLists', '', showTodoLists);
 
 const main = () => {
   loadTodoLists();
