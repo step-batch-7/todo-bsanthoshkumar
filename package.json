@@ -10,7 +10,7 @@
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
     "start": "export DATA_STORE=./dataStore/todos.json;node server.js",
-    "live": "export DATA_STORE=./dataStore/todos.json;nodemon server.js"
+    "live": "export DATA_STORE=./dataStore/todos.json;nodemon -i datastore server.js"
   },
   "repository": {
     "type": "git",
