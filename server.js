@@ -1,5 +1,5 @@
 const { app } = require('./lib/app');
-const defaultPort = 3333;
+const defaultPort = 8000;
 
 const main = cmdLineArgs => {
   let [, , port] = [...cmdLineArgs];
